@@ -4,35 +4,67 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
+import { FirebaseUIModule, firebase, firebaseui } from "firebaseui-angular";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { LoginComponent } from './services/login/login.component';
+import { LoginFirebaseUIComponent } from "./sevices/login-firebase-ui/login-firebase-ui.component";
+import { environment } from "src/environments/environment";
+import { TopPageComponent } from "./top/top-page/top-page.component";
+import { MainpageComponent } from "./mainpage/mainpage/mainpage.component";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBxXe5RoWH3SNr-Mad0A8vQHYlQSHB5gqo",
-  authDomain: "evin-web.firebaseapp.com",
-  databaseURL: "https://evin-web.firebaseio.com",
-  projectId: "evin-web",
-  storageBucket: "evin-web.appspot.com",
-  messagingSenderId: "598059905928",
-  appId: "1:598059905928:web:d4626d17822ac76e61c03d"
+const firebaseUiAuthConfig: firebaseui.auth.Config = {
+  autoUpgradeAnonymousUsers: false, // 匿名認証ユーザー自動アップグレード
+  signInFlow: "redirect", // redirect or popup
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    {
+      scopes: [
+        "public_profile",
+        "email",
+        "user_likes",
+        "user_friends"
+      ],
+      customParameters: {
+        auth_type: "reauthenticate"
+      },
+      provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
+    },
+    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    {
+      requireDisplayName: false,
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
+    },
+    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+    firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+  ],
+  tosUrl: "aaa",
+  privacyPolicyUrl: "http://xn--p8jxb1a1mr009a.com/",
+  signInSuccessUrl: "http://localhost:4200/main-page",
+  credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
+  siteName: "evin-web",
 };
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginFirebaseUIComponent,
+    TopPageComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     // 3. Initialize
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    AngularFireModule.initializeApp(environment.firebase), // angularfireの設定
+    AngularFireAuthModule, // angularfireのAuth用モジュール
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),　// FirebaseUIのモジュール
   ],
   providers: [],
   bootstrap: [AppComponent]
