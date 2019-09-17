@@ -3,7 +3,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { Observable } from "rxjs";
 import { FirebaseUISignInSuccessWithAuthResult, FirebaseUISignInFailure } from "firebaseui-angular";
 import { Router } from "@angular/router";
-
+import { CookieService } from "ngx-cookie-service";
 
 
 @Component({
@@ -13,11 +13,15 @@ import { Router } from "@angular/router";
 })
 export class LoginFirebaseUIComponent implements OnInit {
   user: Observable<firebase.User>;
-  uid: string;
-  constructor(public angularFireAuth: AngularFireAuth, private router: Router) { }
+  constructor(public angularFireAuth: AngularFireAuth,
+              private router: Router,
+              private cookieService: CookieService) { }
 
   ngOnInit() {
     this.user = this.angularFireAuth.authState;
+    if (this.cookieService.get("uid")) {
+      this.router.navigate(["main-page"]);
+    }
   }
 
   // ログアウト
@@ -28,6 +32,7 @@ export class LoginFirebaseUIComponent implements OnInit {
   // 成功時のコールバック
   successCallback(signInSuccessData: FirebaseUISignInSuccessWithAuthResult) {
     console.log(signInSuccessData);
+    this.cookieService.set("uid", this.angularFireAuth.auth.currentUser.uid);
     this.router.navigate(["main-page"]);
   }
 

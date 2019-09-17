@@ -13,6 +13,7 @@ import { LoginFirebaseUIComponent } from "./sevices/login-firebase-ui/login-fire
 import { environment } from "src/environments/environment";
 import { TopPageComponent } from "./top/top-page/top-page.component";
 import { MainpageComponent } from "./mainpage/mainpage/mainpage.component";
+import { CookieService } from "ngx-cookie-service";
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   autoUpgradeAnonymousUsers: false, // 匿名認証ユーザー自動アップグレード
@@ -66,7 +67,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireAuthModule, // angularfireのAuth用モジュール
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),　// FirebaseUIのモジュール
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
