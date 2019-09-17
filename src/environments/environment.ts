@@ -3,16 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  firebase: {
-    apiKey: "AIzaSyBxXe5RoWH3SNr-Mad0A8vQHYlQSHB5gqo",
-    authDomain: "evin-web.firebaseapp.com",
-    databaseURL: "https://evin-web.firebaseio.com",
-    projectId: "evin-web",
-    storageBucket: "evin-web.appspot.com",
-    messagingSenderId: "598059905928",
-    appId: "1:598059905928:web:d4626d17822ac76e61c03d"
-  }
+  production: true
 };
 
 /*

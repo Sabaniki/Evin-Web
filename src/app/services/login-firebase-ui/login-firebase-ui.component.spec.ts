@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { LoginFirebaseUIComponent } from './login-firebase-ui.component';
+import { LoginFirebaseUIComponent } from "./login-firebase-ui.component";
 
-describe('LoginFirebaseUIComponent', () => {
+describe("LoginFirebaseUIComponent", () => {
   let component: LoginFirebaseUIComponent;
   let fixture: ComponentFixture<LoginFirebaseUIComponent>;
 
@@ -19,7 +19,7 @@ describe('LoginFirebaseUIComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
