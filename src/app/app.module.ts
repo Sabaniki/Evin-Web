@@ -9,13 +9,15 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { LoginFirebaseUIComponent } from "./services/login-firebase-ui/login-firebase-ui.component";
 import { environment } from "src/environments/environment";
-import { TopPageComponent } from "./top/top-page/top-page.component";
 import { MainpageComponent } from "./mainpage/mainpage/mainpage.component";
 import { CookieService } from "ngx-cookie-service";
 import { firebaseConfig } from "secret";
+<<<<<<< HEAD
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
+=======
+import { ContentPageComponent } from "./content/content-page/content-page.component";
+>>>>>>> refactoring-pages
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   autoUpgradeAnonymousUsers: false, // 匿名認証ユーザー自動アップグレード
@@ -53,9 +55,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFirebaseUIComponent,
-    TopPageComponent,
-    MainpageComponent
+    MainpageComponent,
+    ContentPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Observable } from "rxjs";
+import { FirebaseUISignInSuccessWithAuthResult, FirebaseUISignInFailure } from "firebaseui-angular";
+import { Router } from "@angular/router";
 import { CookieService } from "ngx-cookie-service";
-import { AngularFireStorage } from "@angular/fire/storage";
+import { AuthService } from "../../services/auth.service";
+import { User } from "src/app/shared/classes/user";
+
 
 @Component({
   selector: "app-mainpage",
@@ -10,18 +14,14 @@ import { AngularFireStorage } from "@angular/fire/storage";
   styleUrls: ["./mainpage.component.css"]
 })
 export class MainpageComponent implements OnInit {
-  constructor(public angularFireAuth: AngularFireAuth,
-              public cookieService: CookieService,
-              public afStorage: AngularFireStorage) { }
-
-  image = new Array<string>();
+  user: Observable<User>;
+  constructor(public auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.afStorage.storage.ref("images").listAll().then(
-      value => value.items.forEach(item => {
-        item.getDownloadURL().then((image: string) => this.image.push(image));
-        }
-      )
-    );
+
+  }
+
+  toContentButton() {
+    this.router.navigate(["/content-page"]);
   }
 }

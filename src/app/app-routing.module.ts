@@ -1,15 +1,13 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { LoginFirebaseUIComponent } from "./services/login-firebase-ui/login-firebase-ui.component";
-import { TopPageComponent } from "./top/top-page/top-page.component";
 import { MainpageComponent } from "./mainpage/mainpage/mainpage.component";
+import { ContentPageComponent } from "./content/content-page/content-page.component";
 
 
 const routes: Routes = [
-  { path: "login", component: LoginFirebaseUIComponent },
-  { path: "top-page", component: TopPageComponent },
   { path: "main-page", component: MainpageComponent },
-  { path: "", redirectTo: "/top-page", pathMatch: "prefix" },
+  { path: "content-page", component: ContentPageComponent },
+  { path: "", redirectTo: "/main-page", pathMatch: "prefix" },
 ];
 
 @NgModule({
