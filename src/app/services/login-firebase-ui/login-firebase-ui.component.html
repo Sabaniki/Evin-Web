@@ -1,12 +1,26 @@
-<firebase-ui
-  (signInSuccessWithAuthResult)="successCallback($event)"
-  (signInFailure)="errorCallback($event)">
-</firebase-ui>
-
-<div *ngIf="(user | async) || {} as user">
-  <div *ngIf="user.uid">
-    <!-- 認証されている場合 -->
-    <p>すでにログインしています。uid: {{user.uid}}</p>
-    <button class="btn btn-danger" (click)="logout()">ログアウト</button>
-  </div>
+<div *ngIf="auth.user$ | async; then authenticated else guest">
+    <!-- template will replace this div -->
 </div>
+
+<!-- User NOT logged in -->
+<ng-template #guest>
+<h3>Howdy, GUEST</h3>
+<p>Login to get started...</p>
+
+<button (click)="auth.googleSignin()">
+    <i class="fa fa-google"></i> Connect Google
+</button>
+
+</ng-template>
+
+
+<!-- User logged in -->
+<ng-template #authenticated>
+<div *ngIf="auth.user$ | async as user">
+    <h3>こんにちは{{ user.displayName }}さん！</h3>
+    <img  [src]="user.photoURL">
+    <p>UID: {{ user.uid }}</p>
+    <button (click)="auth.signOut()">Logout</button>
+</div>
+<button (click)="toMainButton()">メインページへ遷移</button>
+</ng-template>
