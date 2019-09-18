@@ -9,12 +9,11 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { LoginFirebaseUIComponent } from "./services/login-firebase-ui/login-firebase-ui.component";
 import { environment } from "src/environments/environment";
-import { TopPageComponent } from "./top/top-page/top-page.component";
 import { MainpageComponent } from "./mainpage/mainpage/mainpage.component";
 import { CookieService } from "ngx-cookie-service";
-import { fireSecret } from "secret";
+import { firebaseConfig } from "secret";
+import { ContentPageComponent } from "./content/content-page/content-page.component";
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   autoUpgradeAnonymousUsers: false, // 匿名認証ユーザー自動アップグレード
@@ -52,19 +51,18 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFirebaseUIComponent,
-    TopPageComponent,
-    MainpageComponent
+    MainpageComponent,
+    ContentPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     // 3. Initialize
-    AngularFireModule.initializeApp(fireSecret.firebase),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
-    AngularFireModule.initializeApp(fireSecret.firebase), // angularfireの設定
+    AngularFireModule.initializeApp(firebaseConfig), // angularfireの設定
     AngularFireAuthModule, // angularfireのAuth用モジュール
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),　// FirebaseUIのモジュール
   ],
