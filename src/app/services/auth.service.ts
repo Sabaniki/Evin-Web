@@ -8,6 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from "@angular/fire/firest
 
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
+import { Lecture } from "../add-lecture-page/lecture";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -34,7 +35,7 @@ export class AuthService {
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
-    (credential.user as User).lecture = new Array<string>();
+    (credential.user as User).lecture = new Array<Lecture>();
     return this.updateUserData(credential.user as User);
   }
 

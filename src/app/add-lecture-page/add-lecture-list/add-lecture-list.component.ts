@@ -13,4 +13,8 @@ export class AddLectureComponent implements OnInit {
   ngOnInit() {
   }
 
+  onRegBtn(i: number) {
+    alert(i);
+  }
+
 }
