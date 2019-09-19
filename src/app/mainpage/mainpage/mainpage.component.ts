@@ -29,7 +29,7 @@ export class MainpageComponent implements OnInit {
     this.router.navigate(["/lectures-page"]);
   }
 
-  toTeacherList() {
-    this.router.navigate(["/teachers-page"]);
+  toAddLecture() {
+    this.router.navigate(["/add-lectures-page"]);
   }
 }

@@ -16,7 +16,7 @@ import { ContentPageComponent } from "./content/content-page/content-page.compon
 import { LoginFirebaseUIComponent } from "./services/login-firebase-ui/login-firebase-ui.component";
 import { AuthGuard } from "./guard/auth.guard";
 import { LectureListComponent } from "./letutures-page/lecture-list/lecture-list.component";
-import { TeacherListComponent } from "./teachers-page/teacher-list/teacher-list.component";
+import { AddLectureComponent } from "./add-lecture-page/add-lecture-list/add-lecture-list.component";
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { TeacherListComponent } from "./teachers-page/teacher-list/teacher-list.
     ContentPageComponent,
     LoginFirebaseUIComponent,
     LectureListComponent,
-    TeacherListComponent,
+    AddLectureComponent,
   ],
   imports: [
     BrowserModule,
