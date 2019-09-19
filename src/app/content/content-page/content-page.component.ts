@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { Observable } from "rxjs";
 import { CookieService } from "ngx-cookie-service";
 import { AngularFireStorage } from "@angular/fire/storage";
+import { SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
+import { sanitizeIdentifier } from "@angular/compiler";
 
 @Component({
   selector: "app-content-page",
@@ -10,16 +11,21 @@ import { AngularFireStorage } from "@angular/fire/storage";
   styleUrls: ["./content-page.component.css"]
 })
 export class ContentPageComponent implements OnInit {
-  constructor(public angularFireAuth: AngularFireAuth,
-              public cookieService: CookieService,
-              public afStorage: AngularFireStorage) { }
+  constructor(
+    public angularFireAuth: AngularFireAuth,
+    public cookieService: CookieService,
+    public afStorage: AngularFireStorage,
+    private sanitizer: DomSanitizer
+  ) { }
 
-  image = new Array<string>();
+  contentPaths = new Array<string>();
+  trustPaths = new Array<SafeResourceUrl>();
 
   ngOnInit() {
-    this.afStorage.storage.ref("images").listAll().then(
+    this.afStorage.storage.ref("pdfs").listAll().then(
       value => value.items.forEach(item => {
-        item.getDownloadURL().then((image: string) => this.image.push(image));
+        item.getDownloadURL().then((path: string) =>
+          this.trustPaths.push(this.sanitizer.bypassSecurityTrustResourceUrl(path)));
         }
       )
     );
