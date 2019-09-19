@@ -11,10 +11,6 @@ import { switchMap } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-<<<<<<< HEAD
-
-=======
->>>>>>> refactoring-pages
     user$: Observable<User>;
 
     constructor(

@@ -13,11 +13,10 @@ import { environment } from "src/environments/environment";
 import { MainpageComponent } from "./mainpage/mainpage/mainpage.component";
 import { CookieService } from "ngx-cookie-service";
 import { firebaseConfig } from "secret";
-<<<<<<< HEAD
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
-=======
 import { ContentPageComponent } from "./content/content-page/content-page.component";
->>>>>>> refactoring-pages
+import { LoginFirebaseUIComponent } from "./services/login-firebase-ui/login-firebase-ui.component";
+
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   autoUpgradeAnonymousUsers: false, // 匿名認証ユーザー自動アップグレード
@@ -56,7 +55,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   declarations: [
     AppComponent,
     MainpageComponent,
-    ContentPageComponent
+    ContentPageComponent,
+    LoginFirebaseUIComponent
   ],
   imports: [
     BrowserModule,

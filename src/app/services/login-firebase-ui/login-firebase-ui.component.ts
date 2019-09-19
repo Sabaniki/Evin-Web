@@ -12,6 +12,7 @@ import { AuthService } from "../auth.service";
   templateUrl: "./login-firebase-ui.component.html",
   styleUrls: ["./login-firebase-ui.component.css"]
 })
+
 export class LoginFirebaseUIComponent implements OnInit {
   constructor(public auth: AuthService, private router: Router) {
   }
