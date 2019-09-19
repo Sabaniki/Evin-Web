@@ -4,5 +4,5 @@ export class User {
   displayName?: string;
   photoURL?: string;
   profile?: string;
-  lecture?: string[];
+  lecture?: Array<string>;
 }
