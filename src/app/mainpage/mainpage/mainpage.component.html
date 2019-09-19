@@ -6,7 +6,7 @@
 
   <!-- User NOT logged in -->
   <ng-template #guest>
-    <h3>こんにちは！, ゲストさん</h3>
+    <h3>こんにちは！、ゲストさん</h3>
     <p>続けるにはログインしてください</p>
 
     <button class="btn btn-dark" (click)="auth.googleSignin()">
@@ -18,9 +18,13 @@
 
   <!-- User logged in -->
   <ng-template #authenticated>
-    <div *ngIf="auth.user$ | async as user">
+    <!-- <div *ngIf="auth.user$ | async as user">
       <h3>こんにちは！, {{ user.displayName }}さん</h3>
-      <button class="btn btn-dark" (click)="auth.signOut()">ログアウト</button>
+      <button class="btn btn-dark mt-3" (click)="auth.signOut()">ログアウト</button>
     </div>
-    <button class="btn btn-dark" (click)="toContentButton()">コンテンツページへ遷移</button>
+    <button class="btn btn-dark my-4" (click)="toContentButton()">コンテンツページへ遷移</button> -->
+
+    <button class="btn btn-dark" (click)="toLectureList()">授業一覧</button>
+    <button class="btn btn-dark" (click)="toLectureList()">追加</button>
+    <button class="btn btn-dark" (click)="auth.signOut()">ログアウト</button>
   </ng-template>

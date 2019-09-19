@@ -3,7 +3,6 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { CookieService } from "ngx-cookie-service";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
-import { sanitizeIdentifier } from "@angular/compiler";
 
 @Component({
   selector: "app-content-page",

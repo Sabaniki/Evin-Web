@@ -24,4 +24,12 @@ export class MainpageComponent implements OnInit {
   toContentButton() {
     this.router.navigate(["/content-page"]);
   }
+
+  toLectureList() {
+    this.router.navigate(["/lectures-page"]);
+  }
+
+  toTeacherList() {
+    this.router.navigate(["/teachers-page"]);
+  }
 }
