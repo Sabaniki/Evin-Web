@@ -20,7 +20,7 @@ export class AuthService {
     private router: Router
   ) {
       this.user$ = this.afAuth.authState.pipe(
-        switchMap(user => {
+        switchMap((user: User) => {
           // Logged in
           if (user) {
             return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
