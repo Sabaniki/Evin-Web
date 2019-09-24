@@ -1,7 +1,7 @@
-<ng-container *ngFor="let teacher$ of addLectureService.lectures$ | async; index as i;">
+<ng-container *ngFor="let lecture$ of lectures; index as i;">
   <div>
-    教科名：{{teacher$.lecture}}
-    担当：{{teacher$.teacher}}
+    教科名：{{lecture$.lecture}}
+    担当：{{lecture$.teacher}}
     <button class="btn btn-dark" (click)="onRegBtn(i)">登録</button>
   </div>
 </ng-container>

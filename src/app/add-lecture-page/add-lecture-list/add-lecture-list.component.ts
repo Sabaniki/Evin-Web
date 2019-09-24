@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { AddLectureService } from "../add-lecture.service";
+import { LectureService } from "../lecture.service";
 import { AuthService } from "src/app/services/auth.service";
 import { Lecture } from "../lecture";
+import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/firestore";
+import { Observable } from "rxjs";
+import { User } from "src/app/shared/classes/user";
 
 @Component({
   selector: "app-add-lecture-list",
@@ -9,24 +12,29 @@ import { Lecture } from "../lecture";
   styleUrls: ["./add-lecture-list.component.css"]
 })
 export class AddLectureComponent implements OnInit {
+  lectures: Observable<Array<Lecture>>;
+  private usersCollection: AngularFirestoreCollection<User>;
+  private uid: string;
+  /** コレクションのObservable */
+  users: Observable<Array<User>>;
 
   constructor(
-    public addLectureService: AddLectureService,
-    public authService: AuthService) { }
-
-  ngOnInit() {
+    public lectureService: LectureService,
+    public authService: AuthService,
+    public afs: AngularFirestore
+  ) {
+    this.usersCollection = this.afs.collection<User>("users");
   }
 
-  onRegBtn(i: number) {
-    let shasowLecture: Lecture;
+  ngOnInit() {
+    this.authService.user$.subscribe(userInfo => {
+      this.uid = userInfo.uid;
+    });
+    /** Read: データを参照（ストリームに変換） */
+    this.users = this.usersCollection.valueChanges();
+  }
 
-    this.addLectureService.lectures$.subscribe(lecture => console.log(lecture[i].teacher));
-
-    // alert(shasowLecture);
-    // this.authService.user$.subscribe(user =>
-    //   user.lecture.push(shasowLecture)
-    // );
-
-    // this.authService.user$.subscribe(user => alert(user.lecture));
+  onRegBtn(index: number) {
+    let updateUser: User;
   }
 }
