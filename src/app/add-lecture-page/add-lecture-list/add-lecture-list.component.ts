@@ -12,29 +12,45 @@ import { User } from "src/app/shared/classes/user";
   styleUrls: ["./add-lecture-list.component.css"]
 })
 export class AddLectureComponent implements OnInit {
-  lectures: Observable<Array<Lecture>>;
+  /** コレクション */
   private usersCollection: AngularFirestoreCollection<User>;
-  private uid: string;
   /** コレクションのObservable */
-  users: Observable<Array<User>>;
+  users: Observable<User[]>;
 
-  constructor(
-    public lectureService: LectureService,
-    public authService: AuthService,
-    public afs: AngularFirestore
-  ) {
-    this.usersCollection = this.afs.collection<User>("users");
+  /** 更新するドキュメントID */
+  uid: string;
+
+  /** ボタンがdisableかどうか */
+  isDisabledDelete = false;
+  isDisabledEdit = true;
+
+  /** AngularFirestoreをDI */
+  constructor(private afs: AngularFirestore, private authService: AuthService) {
+    /** itemsコレクションを取得してitemsCollectionに代入 */
+    this.usersCollection = afs.collection<User>("users");
   }
 
-  ngOnInit() {
-    this.authService.user$.subscribe(userInfo => {
-      this.uid = userInfo.uid;
-    });
+  ngOnInit(): void {
     /** Read: データを参照（ストリームに変換） */
     this.users = this.usersCollection.valueChanges();
+
+    this.authService.user$.subscribe(user => this.uid = user.uid);
   }
 
-  onRegBtn(index: number) {
-    let updateUser: User;
+  /** Update: データを更新 */
+  updateItem(): void {
+    let userShadow: User;
+    this.usersCollection.doc(this.uid)
+    const user = {
+      id: this.uid,
+      name: this.updatedName.value,
+      age: this.updatedAge.value,
+    };
+    this.usersCollection.doc(this.uid).update(item);
+    this.updatedName.setValue("");
+    this.updatedAge.setValue("");
+    this.uid = null;
+    this.isDisabledDelete = false;
+    this.isDisabledEdit = true;
   }
 }
