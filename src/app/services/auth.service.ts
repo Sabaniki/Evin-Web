@@ -35,7 +35,7 @@ export class AuthService {
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
-    (credential.user as User).lecture = new Array<Lecture>();
+    (credential.user as User).lectures = new Array<Lecture>();
     return this.updateUserData(credential.user as User);
   }
 
@@ -48,11 +48,9 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      lecture: user.lecture
+      lectures: user.lectures
     };
-
     return userRef.set(data, { merge: true });
-
   }
 
   async signOut() {
