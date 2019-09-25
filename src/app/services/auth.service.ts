@@ -30,12 +30,13 @@ export class AuthService {
           }
       })
     );
+      // this.user$.subscribe(user => console.log(user.lectures.lecture));
   }
 
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
-    (credential.user as User).lectures = new Array<Lecture>();
+    // (credential.user as User).lectures = new Lecture();
     return this.updateUserData(credential.user as User);
   }
 

@@ -6,5 +6,5 @@ export class User {
   displayName?: string;
   photoURL?: string;
   profile?: string;
-  lectures?: Array<Lecture>;
+  lectures?: Lecture;
 }

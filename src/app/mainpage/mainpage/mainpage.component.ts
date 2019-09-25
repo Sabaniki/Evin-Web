@@ -32,4 +32,7 @@ export class MainpageComponent implements OnInit {
   toAddLecture() {
     this.router.navigate(["/add-lectures-page"]);
   }
+  toNote() {
+    this.router.navigate(["/content-page"]);
+  }
 }

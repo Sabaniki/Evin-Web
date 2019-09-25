@@ -1,8 +1,10 @@
-<h1>ノート！！</h1>
+<h1>ノート</h1>
 
-<ng-container #contetlist *ngFor="let item of trustPaths; let i=index">
-  <!-- <a [href]="item" target="_blank" download="note.pdf">ノートその{{i+1}}を保存する</a> -->
-  <object [data]=item type="application/pdf" width="100%" height="100%">
-    <p><b>こちらからダウンロードしてくだいさい。</b>: <a href="item.pdf">PDF をダウンロード</a>.</p>
- </object>
+<ng-container #contetlist *ngFor="let url of contentPaths; let i=index">
+  <ng-container *ngIf="checkPng(url); else elseTemplate">
+    <img [src]=url alt="" width="80%" class="mx-auto d-block">
+  </ng-container>
+  <ng-template #elseTemplate>
+    <a [href]=url target="_blank" class="btn btn-lg btn-dark mb-4" download="note.pdf">　ノートを保存する　</a>
+  </ng-template>
 </ng-container>

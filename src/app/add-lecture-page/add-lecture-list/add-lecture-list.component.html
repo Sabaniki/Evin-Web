@@ -2,10 +2,6 @@
   <div>
     教科名：{{lecture$.lecture}}
     担当：{{lecture$.teacher}}
-    <button class="btn btn-dark" (click)="onRegBtn(i)">登録</button>
+    <button class="btn btn-dark" (click)="onRegBtn(i)" [disabled]="buttonsState[i]">登録</button>
   </div>
 </ng-container>
-
-<div>
-  <!-- test: {{(authService.user$ | async).lecture}} -->
-</div>

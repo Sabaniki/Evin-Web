@@ -13,6 +13,7 @@ import swal from "sweetalert";
 export class AddLectureComponent implements OnInit {
   uid: string;
   lectures: Array<Lecture>;
+  buttonsState = Array(3).fill(false);
   constructor(
     public lectureService: LectureService,
     public authService: AuthService,
@@ -37,6 +38,7 @@ export class AddLectureComponent implements OnInit {
         text: "授業を登録しました",
         icon: "success",
       });
+      this.buttonsState[i] = true;
     });
   }
 }
