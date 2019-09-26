@@ -24,6 +24,17 @@ export class AddLectureComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.hasUserLectures();
+  }
+
+  private hasUserLectures() {
+    this.authService.user$.subscribe(user => {
+      for (let i = 0; i < this.lectures.length; i++) {
+        if (user.lectures.lecture === this.lectures[i].lecture) {
+          this.buttonsState[i] = true;
+        }
+      }
+    });
   }
 
   async onRegBtn(i: number) {

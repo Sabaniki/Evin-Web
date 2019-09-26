@@ -4,6 +4,7 @@ import { CookieService } from "ngx-cookie-service";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
 import { AuthService } from "src/app/services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-content-page",
@@ -15,7 +16,7 @@ export class ContentPageComponent implements OnInit {
     public angularFireAuth: AngularFireAuth,
     public cookieService: CookieService,
     public afStorage: AngularFireStorage,
-    private sanitizer: DomSanitizer,
+    private router: Router,
     private authService: AuthService
   ) { }
 
@@ -41,5 +42,9 @@ export class ContentPageComponent implements OnInit {
     if (url.includes("png")) {
       return true;
     } else {  return false; }
+  }
+
+  redirectMain() {
+    this.router.navigate(["/main"]);
   }
 }
