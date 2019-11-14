@@ -17,6 +17,7 @@ import { LoginFirebaseUIComponent } from "./services/login-firebase-ui/login-fir
 import { AuthGuard } from "./guard/auth.guard";
 import { LectureListComponent } from "./letutures-page/lecture-list/lecture-list.component";
 import { AddLectureComponent } from "./add-lecture-page/add-lecture-list/add-lecture-list.component";
+import { RedirectMainComponent } from "./redirect-main/redirect-main/redirect-main.component";
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { AddLectureComponent } from "./add-lecture-page/add-lecture-list/add-lec
     LoginFirebaseUIComponent,
     LectureListComponent,
     AddLectureComponent,
+    RedirectMainComponent,
   ],
   imports: [
     BrowserModule,

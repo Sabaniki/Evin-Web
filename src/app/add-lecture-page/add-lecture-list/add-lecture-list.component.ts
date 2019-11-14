@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 import { AuthService } from "src/app/services/auth.service";
 import { Lecture } from "../lecture";
 import { AngularFirestore } from "@angular/fire/firestore";
@@ -10,7 +10,8 @@ import swal from "sweetalert";
   templateUrl: "./add-lecture-list.component.html",
   styleUrls: ["./add-lecture-list.component.css"]
 })
-export class AddLectureComponent implements OnInit {
+export class AddLectureComponent implements OnInit, OnChanges {
+
   uid: string;
   lectures: Array<Lecture>;
   buttonsState = Array(3).fill(false);
@@ -24,7 +25,11 @@ export class AddLectureComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.hasUserLectures();
+    this.hasUserLectures();
+  }
+
+  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+    this.hasUserLectures();
   }
 
   private hasUserLectures() {
