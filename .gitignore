@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 
 # 自分で加えた
-/secret.ts
+secret.ts

@@ -34,9 +34,7 @@ import { RedirectMainComponent } from "./redirect-main/redirect-main/redirect-ma
     BrowserModule,
     AppRoutingModule,
     // 3. Initialize
-    AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, // firestore
-    AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     AngularFireModule.initializeApp(firebaseConfig), // angularfireの設定
     AngularFireAuthModule, // angularfireのAuth用モジュール

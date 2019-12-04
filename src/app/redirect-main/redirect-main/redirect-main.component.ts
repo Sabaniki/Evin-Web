@@ -13,6 +13,6 @@ export class RedirectMainComponent implements OnInit {
   ngOnInit() {
   }
   toMainPage() {
-    this.router.navigate(["/しのさんの乳首は緑色"]);
+    this.router.navigate(["/#"]);
   }
 }
