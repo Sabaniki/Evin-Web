@@ -1,28 +1,53 @@
 
-<!-- 移した -->
-<div *ngIf="auth.user$ | async; then authenticated else guest">
-    <!-- template will replace this div -->
-  </div>
+<!--&lt;!&ndash; 移した &ndash;&gt;-->
+<!--<div *ngIf="auth.user$ | async; then authenticated else guest">-->
+<!--    &lt;!&ndash; template will replace this div &ndash;&gt;-->
+<!--  </div>-->
 
-  <!-- User NOT logged in -->
-  <ng-template #guest>
-    <h3>ようこそ、ゲストさん</h3>
-    <p>続けるにはログインが必要です</p>
+<!--  &lt;!&ndash; User NOT logged in &ndash;&gt;-->
+<!--  <ng-template #guest>-->
+<!--    <h3>ようこそ、ゲストさん</h3>-->
+<!--    <p>続けるにはログインが必要です</p>-->
 
-    <button class="btn btn-dark" (click)="auth.googleSignin()">
-      <i class="fa fa-google"></i> Googleアカウントでログイン
-    </button>
+<!--    <button class="btn btn-dark" (click)="auth.googleSignin()">-->
+<!--      <i class="fa fa-google"></i> Googleアカウントでログイン-->
+<!--    </button>-->
 
-  </ng-template>
+<!--  </ng-template>-->
 
 
-  <!-- User logged in -->
-  <ng-template #authenticated>
-    <div *ngIf="auth.user$ | async as user">
-      <h3>ようこそ、{{ user.displayName }}さん</h3>
+<!--  &lt;!&ndash; User logged in &ndash;&gt;-->
+<!--  <ng-template #authenticated>-->
+<!--    <div *ngIf="auth.user$ | async as user">-->
+<!--      <h3>ようこそ、{{ user.displayName }}さん</h3>-->
+<!--    </div>-->
+
+<!--    <button class="btn btn-dark" (click)="toNote()">ノート表示</button>-->
+<!--    <button class="btn btn-dark" (click)="toAddLecture()">追加</button>-->
+<!--    <button class="btn btn-dark" (click)="auth.signOut()">ログアウト</button>-->
+<!--  </ng-template>-->
+<div class="container">
+  <div class="row">
+    <div class="card col-md-4 zoom-in">
+      <img class="card-img-top zoom-in" src="../assets/ノートのアイコン素材.svg" alt="ノートのアイコン">
+      <div class="card-body">
+        <h2 class="card-title text-lg-center">ノートを閲覧</h2>
+        <p class="card-text">自動で作成されたノートを閲覧することができます</p>
+      </div>
     </div>
-
-    <button class="btn btn-dark" (click)="toNote()">ノート表示</button>
-    <button class="btn btn-dark" (click)="toAddLecture()">追加</button>
-    <button class="btn btn-dark" (click)="auth.signOut()">ログアウト</button>
-  </ng-template>
+    <div class="card col-md-4 zoom-in">
+      <img class="card-img-top" src="../assets/授業のフリー素材.svg" alt="授業のアイコン">
+      <div class="card-body">
+        <h2 class="card-title text-lg-center">授業を登録</h2>
+        <p class="card-text">受講している授業をマイリストに追加登録することができます</p>
+      </div>
+    </div>
+    <div class="card col-md-4 zoom-in">
+      <img class="card-img-top" src="../assets/クラウドのアップロードアイコン.svg" alt="アップロードのアイコン">
+      <div class="card-body">
+        <h2 class="card-title text-lg-center">映像をアップロード</h2>
+        <p class="card-text">授業を録画した映像をアップロードすることができます</p>
+      </div>
+    </div>
+  </div>
+</div>
